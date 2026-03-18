@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+  /* ══ Minerva Foods — Azul Confiável ══ */
+  --color-indigo-50: #eef3f8;
+  --color-indigo-100: #dce7f0;
+  --color-indigo-200: #b4cde0;
+  --color-indigo-300: #6d9dc0;
+  --color-indigo-400: #4a7fa5;
+  --color-indigo-500: #2c5372;
+  --color-indigo-600: #234563;
+  --color-indigo-700: #1a3550;
+  --color-indigo-800: #12263b;
+  --color-indigo-900: #0c1a2a;
+  --color-indigo-950: #070f19;
+
+  /* ══ Violet / Purple → mesma família azul ══ */
+  --color-violet-50: #eef3f8;
+  --color-violet-100: #dce7f0;
+  --color-violet-200: #b4cde0;
+  --color-violet-300: #6d9dc0;
+  --color-violet-400: #4a7fa5;
+  --color-violet-500: #2c5372;
+  --color-violet-600: #234563;
+  --color-violet-700: #1a3550;
+  --color-purple-50: #eef3f8;
+  --color-purple-100: #dce7f0;
+  --color-purple-200: #b4cde0;
+  --color-purple-300: #6d9dc0;
+  --color-purple-400: #4a7fa5;
+  --color-purple-500: #2c5372;
+
+  /* ══ Cyan → Dourado Prestigiado ══ */
+  --color-cyan-50: #fdf9f1;
+  --color-cyan-100: #f5edda;
+  --color-cyan-200: #ebdbb5;
+  --color-cyan-300: #d9c48e;
+  --color-cyan-400: #c7b475;
+  --color-cyan-500: #b5a060;
+  --color-cyan-600: #9a8750;
+
+  /* ══ Rose / Pink → Vermelho Vigoroso ══ */
+  --color-rose-50: #fef2f3;
+  --color-rose-100: #fee2e4;
+  --color-rose-200: #fbc4c9;
+  --color-rose-300: #f08a94;
+  --color-rose-400: #e83948;
+  --color-rose-500: #d42d3b;
+  --color-rose-600: #b8242f;
+  --color-pink-50: #fef2f3;
+  --color-pink-100: #fee2e4;
+  --color-pink-200: #fbc4c9;
+  --color-pink-300: #f08a94;
+  --color-pink-400: #e83948;
+  --color-pink-500: #d42d3b;
+
+  /* ══ Blue → Minerva Azul ══ */
+  --color-blue-50: #eef3f8;
+  --color-blue-100: #dce7f0;
+  --color-blue-200: #b4cde0;
+  --color-blue-300: #6d9dc0;
+  --color-blue-400: #4a7fa5;
+  --color-blue-500: #2c5372;
+  --color-blue-600: #234563;
+  --color-blue-700: #1a3550;
+
+  /* ══ Brand Tokens ══ */
+  --color-minerva: #2c5372;
+  --color-minerva-light: #4a7fa5;
+  --color-minerva-gold: #c7b475;
+  --color-minerva-red: #e83948;
+}
+
+:root {
+  --color-primary: #2c5372;
+  --color-primary-light: #4a7fa5;
+  --color-primary-dark: #1a3550;
+  --color-accent: #c7b475;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #e83948;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+}
+
+body {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(160deg, #ffffff 0%, #f4f7fb 40%, #eef3f8 100%);
+  background-attachment: fixed;
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+@layer base {
+  * {
+    border-color: theme(--color-gray-200);
+  }
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c1cdd8; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #8a9eb0; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 57, 72, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(232, 57, 72, 0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.3s ease-out both; }
+.animate-slide-up { animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-slide-right { animation: slideInRight 0.3s ease-out both; }
+
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+  backdrop-filter: blur(8px);
+}
