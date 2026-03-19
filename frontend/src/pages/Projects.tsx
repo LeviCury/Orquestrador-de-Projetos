@@ -8,14 +8,13 @@ import {
 } from '@/types';
 import { getProjects, createProject, deleteProject, getCollaborators } from '@/api/client';
 import Modal from '@/components/Modal';
-import RichTooltip from '@/components/RichTooltip';
 import ProgressBar from '@/components/ProgressBar';
 import HoursDisplay from '@/components/HoursDisplay';
 import { SkeletonCard } from '@/components/Skeleton';
 import { useToast } from '@/components/Toast';
 import { useAuth } from '@/contexts/AuthContext';
 import {
-  Plus, Trash2, Calendar, Users, FolderKanban, Info, ArrowRight,
+  Plus, Trash2, Calendar, Users, FolderKanban, ArrowRight,
   Search, ArrowUpDown, AlertTriangle, TrendingUp, Clock, Flame,
   CheckCircle2, XCircle, Layers,
 } from 'lucide-react';
@@ -27,13 +26,6 @@ const STATUS_TABS = [
   { key: 'completed', label: 'Concluído' },
   { key: 'cancelled', label: 'Cancelado' },
 ] as const;
-
-const STATUS_OPTIONS = [
-  { value: 'planning', label: 'Planejamento' },
-  { value: 'in_progress', label: 'Em Andamento' },
-  { value: 'completed', label: 'Concluído' },
-  { value: 'cancelled', label: 'Cancelado' },
-];
 
 const LEVELS: ClassificationLevel[] = ['low', 'medium', 'high'];
 

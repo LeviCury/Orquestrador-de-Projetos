@@ -310,13 +310,6 @@ export interface SearchResult {
   status: string | null;
 }
 
-export interface Baseline {
-  id: number;
-  project_id: number;
-  name: string;
-  snapshot: any;
-  created_at: string;
-}
 
 export interface ProjectTemplate {
   id: number;

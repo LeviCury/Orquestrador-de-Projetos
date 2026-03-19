@@ -1,16 +1,16 @@
-import { NavLink, Outlet, useLocation, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   LayoutDashboard, FolderKanban, Users, Clock, Search,
   PanelLeftClose, PanelLeftOpen, Zap, Target, Copy,
-  Bell, Check, CheckCheck, X, BarChart3,
+  Bell, CheckCheck, X, BarChart3,
   ShieldCheck, LogOut,
 } from 'lucide-react';
 import QuickHoursWidget from '@/components/QuickHoursWidget';
 import CommandPalette from '@/components/CommandPalette';
 import { useAuth } from '@/contexts/AuthContext';
 import { getNotifications, getUnreadCount, markNotificationRead, markAllNotificationsRead, getCollaborators, authenticatedUrl } from '@/api/client';
-import type { NotificationItem, Collaborator } from '@/types';
+import type { NotificationItem } from '@/types';
 
 const NAV_ITEMS = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },

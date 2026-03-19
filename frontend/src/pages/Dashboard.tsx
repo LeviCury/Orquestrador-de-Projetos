@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 import {
   FolderKanban, Clock, AlertTriangle, TrendingUp,
-  Filter, X, Layers, CheckSquare, CalendarDays, Activity,
+  Filter, X, Layers, CheckSquare, Activity,
   ChevronRight, ArrowRight, Users, Target, BarChart3, Flame,
   Headset, UserCheck, ChevronDown,
 } from 'lucide-react';
@@ -269,7 +269,7 @@ export default function Dashboard() {
                       {workSplitData.map((e, i) => <Cell key={i} fill={e.color} />)}
                     </Pie>
                     <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid #e2e8f0', fontSize: 12 }}
-                      formatter={(v: number) => `${v.toFixed(1)}h`} />
+                      formatter={(v: number | undefined) => `${(v ?? 0).toFixed(1)}h`} />
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="flex-1 space-y-4">
@@ -318,7 +318,7 @@ export default function Dashboard() {
                     <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
                     <Tooltip contentStyle={{ borderRadius: 14, border: '1px solid #e2e8f0', fontSize: 12 }}
-                      formatter={(v: number) => `${v.toFixed(1)}h`} cursor={{ fill: 'rgba(44,83,114,.04)' }} />
+                      formatter={(v: number | undefined) => `${(v ?? 0).toFixed(1)}h`} cursor={{ fill: 'rgba(44,83,114,.04)' }} />
                     <Legend wrapperStyle={{ fontSize: 11 }} />
                     <Bar dataKey="Projetos" stackId="a" fill="#4a7fa5" radius={[0, 0, 0, 0]} />
                     <Bar dataKey="Chamados" stackId="a" fill="#c7b475" radius={[4, 4, 0, 0]} />

@@ -27,7 +27,7 @@ const STAGE_COLORS = [
   { bg: 'bg-violet-500', light: 'bg-violet-50', text: 'text-violet-700', border: 'border-violet-200' },
 ];
 
-export default function GridView({ stages, collabs, onReload }: Props) {
+export default function GridView({ stages, collabs: _collabs, onReload }: Props) {
   const { toast } = useToast();
   const [editCell, setEditCell] = useState<EditCell | null>(null);
   const inputRef = useRef<HTMLInputElement | HTMLSelectElement | null>(null);
@@ -73,7 +73,7 @@ export default function GridView({ stages, collabs, onReload }: Props) {
   const cellCls = 'px-3 py-2.5 border-b border-slate-100 text-sm';
   const headerCls = 'px-3 py-2.5 border-b-2 border-slate-200 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-50/80 sticky top-0 z-10';
 
-  const renderEditInput = (task: Task, field: string) => {
+  const renderEditInput = (_task: Task, field: string) => {
     const isSelect = field === 'status' || field === 'priority';
     const isDate = field === 'planned_start' || field === 'planned_end';
     const isNumber = field === 'estimated_hours';
@@ -117,7 +117,7 @@ export default function GridView({ stages, collabs, onReload }: Props) {
       return <td className={cellCls + ' bg-[#eef3f8]/50'}>{renderEditInput(task, field)}</td>;
     }
 
-    const rawValue = field === 'estimated_hours' ? String(task.estimated_hours) : (task as Record<string, unknown>)[field] as string ?? '';
+    const rawValue = field === 'estimated_hours' ? String(task.estimated_hours) : (task as unknown as Record<string, unknown>)[field] as string ?? '';
 
     return (
       <td

@@ -27,7 +27,7 @@ function fmt(d: string | null | undefined): string {
 export default function RichTooltip({ data, children }: Props) {
   const [show, setShow] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleEnter = (e: React.MouseEvent) => {

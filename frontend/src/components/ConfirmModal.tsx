@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { AlertTriangle, Trash2, RotateCcw, Play, Info } from 'lucide-react';
+import { AlertTriangle, Trash2, RotateCcw, Info } from 'lucide-react';
 
 export type ConfirmVariant = 'danger' | 'warning' | 'info' | 'reopen';
 

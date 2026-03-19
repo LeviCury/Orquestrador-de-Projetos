@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
-  ArrowLeft, Plus, Pencil, Trash2, ChevronDown, ChevronRight,
+  ArrowLeft, Plus, Pencil, Trash2,
   Calendar, Clock, Users, Timer, Check, MessageSquare, Send,
   Play, Pause, Square, Layers, LayoutGrid, BarChart3, Activity as ActivityIcon,
 } from 'lucide-react';
@@ -22,7 +22,7 @@ import {
   createTask, updateTask, deleteTask,
   getCollaborators, quickTimeEntry,
   getActivities, getComments, createComment,
-  bulkReorderStages, bulkReorderTasks,
+  bulkReorderStages,
 } from '@/api/client';
 import Modal from '@/components/Modal';
 import ConfirmModal from '@/components/ConfirmModal';
@@ -267,18 +267,6 @@ export default function ProjectDetail() {
       setTimeout(() => setQuickHours({ target: null, stageId: null, taskId: null, hours: 0, collaboratorId: 0, desc: '', entryDate: new Date().toISOString().slice(0, 10), saving: false, success: false }), 1200);
       load();
     } catch { setQuickHours(prev => ({ ...prev, saving: false })); toast('error', 'Erro ao registrar horas'); }
-  };
-
-  const changeStageStatus = async (stageId: number, newStatus: string) => {
-    try {
-      const today = new Date().toISOString().slice(0, 10);
-      const payload: Record<string, unknown> = { status: newStatus };
-      if (newStatus === 'in_progress') payload.actual_start = today;
-      if (newStatus === 'completed') payload.actual_end = today;
-      await updateStage(stageId, payload);
-      toast('success', `Status: ${STATUS_LABELS[newStatus] ?? newStatus}`);
-      load();
-    } catch { toast('error', 'Erro ao alterar status'); }
   };
 
   const changeTaskStatus = async (taskId: number, newStatus: string) => {

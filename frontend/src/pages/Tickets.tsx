@@ -22,7 +22,9 @@ export default function Tickets() {
   const [loading, setLoading] = useState(true);
   const [filterCollab, setFilterCollab] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  const { success, error: showErr } = useToast();
+  const { toast } = useToast();
+  const success = (msg: string) => toast('success', msg);
+  const showErr = (msg: string) => toast('error', msg);
 
   const isAnalyst = user?.system_role === 'analyst';
   const isManager = user?.system_role === 'manager' || user?.system_role === 'admin';

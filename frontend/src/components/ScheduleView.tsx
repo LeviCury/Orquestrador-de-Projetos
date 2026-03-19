@@ -112,7 +112,6 @@ export default function ScheduleView({ project }: Props) {
     const seriesConfigs: SeriesConfig[] = [];
 
     if (hasAutoBaselines) {
-      const firstBl = autoBaselines[0];
       seriesConfigs.push({
         key: 'bl_original',
         name: 'Planejado Original',

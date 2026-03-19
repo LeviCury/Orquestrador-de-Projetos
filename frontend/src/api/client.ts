@@ -223,9 +223,9 @@ export const getProjectWorkload = (projectId: number) =>
   api.get<import('@/types').WorkloadWeek[]>(`/dashboard/workload/${projectId}`).then(r => r.data);
 
 // ── Bulk update (reorder) ──
-export const bulkReorderStages = (projectId: number, stageIds: number[]) =>
+export const bulkReorderStages = (_projectId: number, stageIds: number[]) =>
   Promise.all(stageIds.map((id, i) => api.put(`/stages/${id}`, { order_index: i })));
-export const bulkReorderTasks = (stageId: number, taskIds: number[]) =>
+export const bulkReorderTasks = (_stageId: number, taskIds: number[]) =>
   Promise.all(taskIds.map((id, i) => api.put(`/tasks/${id}`, { order_index: i })));
 
 // ── Unified Hours ──
@@ -284,3 +284,17 @@ export const checkTicketDuplicate = (glpiTicketId: string, collaboratorId: numbe
   }).then(r => r.data);
 export const getDailyHours = (collaboratorId: number, targetDate?: string) =>
   api.get<import('@/types').DailyHoursSummary>(`/tickets/daily-hours/${collaboratorId}`, { params: targetDate ? { target_date: targetDate } : {} }).then(r => r.data);
+
+// ── Sprints ──
+export const getSprints = (projectId: number) =>
+  api.get<import('@/types').Sprint[]>(`/sprints/project/${projectId}`).then(r => r.data);
+export const createSprint = (projectId: number, data: Record<string, unknown>) =>
+  api.post<import('@/types').Sprint>(`/sprints/project/${projectId}`, data).then(r => r.data);
+export const updateSprint = (id: number, data: Record<string, unknown>) =>
+  api.put<import('@/types').Sprint>(`/sprints/${id}`, data).then(r => r.data);
+export const deleteSprint = (id: number) =>
+  api.delete(`/sprints/${id}`);
+export const assignTaskToSprint = (sprintId: number, taskId: number) =>
+  api.post(`/sprints/${sprintId}/tasks/${taskId}`).then(r => r.data);
+export const unassignTaskFromSprint = (sprintId: number, taskId: number) =>
+  api.delete(`/sprints/${sprintId}/tasks/${taskId}`);

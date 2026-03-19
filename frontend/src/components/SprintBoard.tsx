@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { Sprint, Task, Stage } from '@/types';
-import { STATUS_LABELS, PRIORITY_LABELS } from '@/types';
+import type { Sprint, Stage } from '@/types';
+import { PRIORITY_LABELS } from '@/types';
 import { getSprints, createSprint, updateSprint, deleteSprint, assignTaskToSprint, unassignTaskFromSprint } from '@/api/client';
 import { Plus, Trash2, Check, Target, ChevronDown, ChevronRight, Play, Pencil, X } from 'lucide-react';
 import StatusBadge from './StatusBadge';

@@ -216,7 +216,6 @@ export default function TimelineChart({ data, singleProject = false }: Props) {
             const isCol = collapsed.has(key);
             const Icon = LEVEL_ICONS[bar.level];
             const health = getHealth(bar);
-            const hs = HEALTH_STYLES[health];
             const actualCol = ACTUAL_COLORS[health];
 
             const pl = getPos(bar.planned_start, bar.planned_end);
